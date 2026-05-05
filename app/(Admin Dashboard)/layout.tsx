@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import Footer from "@/components/common/footer";
+import Footer from "@/app/(Admin Dashboard)/components/footer";
 import { Provider } from "@/app/provider";
 import Navbar from "@/app/(Admin Dashboard)/components/navbar";
 

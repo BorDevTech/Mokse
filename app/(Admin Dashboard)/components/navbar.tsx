@@ -55,21 +55,23 @@ export default function Navbar() {
 
   // Container props
   const ContainerProps = {
-    h: { base: "15dvh", md: "10vh" },
-    zIndex: 2,
-    position: { base: "sticky", },//isFixed? "fixed": "absolute",
-    fluid: true,
+    h: { base: "10dvh", aboveBase: "10dvh" }, //notMobileDevice ? "10vh" : "5vh",
+    zIndex: 2, //2,
+
+    fluid: { base: true },//true,
     py: { base: 5, aboveBase: 8 },//isFixed ? (notMobileDevice ? 8 : 2) : notMobileDevice ? 8 : 5,
-    transition: "all 0.2s ease-in-out",
-    transform: isFixed ? "translateY(0)" : "translateY(-20px)",
-    opacity: isFixed ? 1 : 0.9,
-    boxShadow: isFixed ? "2xl" : "none",
-    bg: isFixed
-      ? colorMode === "light"
-        ? "blue.500"
-        : "blue.500"
-      : "blue",
-    className: openSans.className,
+
+    boxShadow: { base: "2xl" },//isFixed ? "2xl" : "none",
+    bg: {
+      base: colorMode === "light"
+        ? "black"
+        : "blackAlpha.950"
+      ,
+      aboveBase: colorMode === "light"
+        ? "black"
+        : "blackAlpha.950"
+    },
+    className: openSans.className,//openSans.className,
   } as const;
 
   // Nav text props
@@ -82,37 +84,38 @@ export default function Navbar() {
   return (
     <Container {...ContainerProps} as={"nav"}>
       <HStack justifyContent={"space-between"} px={8}>
+
         <ChakraLink asChild pl={8}>
           <NextLink href="/">
             <ChakraImage asChild >
               <Image
                 src="/mokse-logo_darkmode.png"
                 alt="MOKSE Logo"
-                width={180}
-                height={46}
+                width={"180"}
+                height={"46"}
               />
             </ChakraImage>
 
           </NextLink>
         </ChakraLink>
         <HStack justifyContent={"space-evenly"} spaceX={6} px={8}>
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow={"lg"}>
             <NextLink href="/about">
               <Text {...navTextProps}>About</Text>
             </NextLink>
           </ChakraLink>
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow={"lg"}>
             <NextLink href="/contact">
               <Text {...navTextProps}>Contact</Text>
             </NextLink>
           </ChakraLink>
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow={"lg"}>
             <NextLink href="/services">
               <Text {...navTextProps}>Services</Text>
             </NextLink>
           </ChakraLink>
 
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow={"lg"}>
             <NextLink href="/programs">
               <Box position={"relative"} display={"inline-block"}>
                 <Text {...navTextProps}>
@@ -127,7 +130,7 @@ export default function Navbar() {
               </Box>
             </NextLink>
           </ChakraLink>
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow={"lg"}>
             <NextLink href="/resources">
               <Box position={"relative"} display={"inline-block"}>
                 <Text {...navTextProps}>
