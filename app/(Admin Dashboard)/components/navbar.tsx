@@ -18,6 +18,7 @@ import {
   Portal,
   Heading,
   Center,
+  Card,
 } from "@chakra-ui/react";
 import {
   MdBrightness4 as MdMoon,
@@ -63,10 +64,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   // Container props
   const ContainerProps = {
-    h: { base: "10dvh", aboveBase: "10dvh" }, //notMobileDevice ? "10vh" : "5vh",
+    h: { mobile: "10dvh", tablet: "30dvh", laptop: "50dvh", xLarge: "70dvh", "2XLarge": "90dvh" }, //"2XLarge": "10dvh",
     zIndex: 2, //2,
 
-    py: { base: 5, aboveBase: 8 },//isFixed ? (notMobileDevice ? 8 : 2) : notMobileDevice ? 8 : 5,
+    py: { base: 5, mdTo2xl: 8 },//isFixed ? (notMobileDevice ? 8 : 2) : notMobileDevice ? 8 : 5,
 
     boxShadow: { base: "2xl" },//isFixed ? "2xl" : "none",
     bg: {
@@ -78,7 +79,9 @@ export default function Navbar() {
         ? "black"
         : "blackAlpha.950"
     },
+    w: "100dvw",
     className: openSans.className,//openSans.className,
+    justifyContent: "space-between",
   } as const;
 
   // Nav text props
@@ -89,9 +92,9 @@ export default function Navbar() {
   } as const;
 
   return (
-    <HStack {...ContainerProps} as={"nav"} px={{ base: 0, mdTo2xl: 8 }}>
+    <HStack {...ContainerProps} as={"nav"} color={"#f8f7f7"}>
 
-      <ChakraLink asChild pl={{ base: 4, mdTo2xl: 8 }}>
+      <ChakraLink asChild pl={{ mobile: 4, laptop: 8 }}>
         <NextLink href="/">
           <ChakraImage asChild >
             <Image
@@ -104,24 +107,24 @@ export default function Navbar() {
 
         </NextLink>
       </ChakraLink>
-      <HStack justifyContent={"space-evenly"} spaceX={6} px={8}>
-        <ChakraLink asChild hideBelow={"lg"}>
+      <HStack justifyContent={"space-evenly"} spaceX={6} px={8} hideBelow={"laptop"}>
+        <ChakraLink asChild>
           <NextLink href="/about">
             <Text {...navTextProps}>About</Text>
           </NextLink>
         </ChakraLink>
-        <ChakraLink asChild hideBelow={"lg"}>
+        <ChakraLink asChild>
           <NextLink href="/contact">
             <Text {...navTextProps}>Contact</Text>
           </NextLink>
         </ChakraLink>
-        <ChakraLink asChild hideBelow={"lg"}>
+        <ChakraLink asChild>
           <NextLink href="/services">
             <Text {...navTextProps}>Services</Text>
           </NextLink>
         </ChakraLink>
 
-        <ChakraLink asChild hideBelow={"lg"}>
+        <ChakraLink asChild>
           <NextLink href="/programs">
             <Box position={"relative"} display={"inline-block"}>
               <Text {...navTextProps}>
@@ -136,7 +139,7 @@ export default function Navbar() {
             </Box>
           </NextLink>
         </ChakraLink>
-        <ChakraLink asChild hideBelow={"lg"}>
+        <ChakraLink asChild>
           <NextLink href="/resources">
             <Box position={"relative"} display={"inline-block"}>
               <Text {...navTextProps}>
@@ -164,114 +167,115 @@ export default function Navbar() {
           rounded="md"
           size={"xl"}
           onClick={toggleColorMode}
-          hideBelow={"lg"}
         >
           {isMounted && (colorMode === "light" ? <MdMoon /> : <MdSun />)}
         </Button>
 
-        {/* Mobile Menu */}
-        <Drawer.Root size={"full"} open={open} onOpenChange={(e) => setOpen(e.open)}>
-          <Drawer.Trigger asChild>
-            <Button variant="outline" size="sm">
-              Menu
-            </Button>
-          </Drawer.Trigger>
-          <Portal>
-            <Drawer.Backdrop />
-            <Drawer.Positioner>
-              <Drawer.Content>
-                <Drawer.Header>
-                  <Drawer.Title>Menu</Drawer.Title>
-                </Drawer.Header>
-                <Drawer.Body>
-                  <Container>
-                    <VStack>
-                      <Heading>Navigation</Heading>
-                      <VStack gapY={4} alignItems={"start"}>
-                        <ChakraLink asChild>
-                          <NextLink href="/about">
-                            <Text {...navTextProps}>About</Text>
-                          </NextLink>
-                        </ChakraLink>
-                        <ChakraLink asChild>
-                          <NextLink href="/contact">
-                            <Text {...navTextProps}>Contact</Text>
-                          </NextLink>
-                        </ChakraLink>
-                        <ChakraLink asChild>
-                          <NextLink href="/services">
-                            <Text {...navTextProps}>Services</Text>
-                          </NextLink>
-                        </ChakraLink>
 
-                        <ChakraLink asChild>
-                          <NextLink href="/programs">
-                            <Box position={"relative"} display={"inline-block"}>
-                              <Text {...navTextProps}>
-                                {/* Float the badge to the above the text */}
-                                Programs
-                              </Text>
-                              <Float placement={"middle-start"} offsetX="-5" >
-                                <Badge variant="solid" colorPalette="green">
-                                  New
-                                </Badge>
-                              </Float>
-                            </Box>
-                          </NextLink>
-                        </ChakraLink>
-                        <ChakraLink asChild>
-                          <NextLink href="/resources">
-                            <Box position={"relative"} display={"inline-block"}>
-                              <Text {...navTextProps}>
-                                {/* Float the badge to the above the text */}
-                                Resources
-                              </Text>
-                              <Float placement={"middle-start"} offsetX="-5"
-                              >
-                                <Badge variant="solid" colorPalette="green">
-                                  New
-                                </Badge>
-                              </Float>
-                            </Box>
-                          </NextLink>
-                        </ChakraLink>
-                      </VStack>
-
-                      <Heading>Appearance</Heading>
-                      <ButtonGroup>
-                        <Button
-                          bg={
-                            isFixed
-                              ? isMounted
-                                ? "teal.focusRing"
-                                : "teal.focusRing"
-                              : "transparent"
-                          }
-                          variant={isFixed ? "solid" : "ghost"}
-                          rounded="md"
-                          size={"xl"}
-                          onClick={toggleColorMode}
-                        >
-                          {isMounted && (colorMode === "light" ? <><MdMoon /> Dark Mode</> : <><MdSun /> Light Mode</>)}
-                        </Button>
-                      </ButtonGroup>
-
-                    </VStack>
-                  </Container>
-                </Drawer.Body>
-                <Drawer.Footer justifyContent={"center"}>
-                  <Button variant="outline" size="sm" onClick={() => setOpen(false)} mb={"10dvh"}>
-                    Close
-                  </Button>
-                </Drawer.Footer>
-                <Drawer.CloseTrigger asChild>
-                  <CloseButton size="sm" />
-                </Drawer.CloseTrigger>
-              </Drawer.Content>
-            </Drawer.Positioner>
-          </Portal>
-        </Drawer.Root>
       </HStack>
-    </HStack>
+
+      {/* Mobile Menu */}
+      <Drawer.Root size={"full"} open={open} onOpenChange={(e) => setOpen(e.open)}  >
+        <Drawer.Trigger asChild mr={8}>
+          <Button variant="outline" size="sm">
+            Menu
+          </Button>
+        </Drawer.Trigger>
+        <Portal>
+          <Drawer.Backdrop />
+          <Drawer.Positioner>
+            <Drawer.Content>
+              <Drawer.Header>
+                <Drawer.Title>Menu</Drawer.Title>
+              </Drawer.Header>
+              <Drawer.Body>
+                <Container>
+                  <VStack>
+                    <Heading>Navigation</Heading>
+                    <VStack gapY={4} alignItems={"start"}>
+                      <ChakraLink asChild>
+                        <NextLink href="/about">
+                          <Text {...navTextProps}>About</Text>
+                        </NextLink>
+                      </ChakraLink>
+                      <ChakraLink asChild>
+                        <NextLink href="/contact">
+                          <Text {...navTextProps}>Contact</Text>
+                        </NextLink>
+                      </ChakraLink>
+                      <ChakraLink asChild>
+                        <NextLink href="/services">
+                          <Text {...navTextProps}>Services</Text>
+                        </NextLink>
+                      </ChakraLink>
+
+                      <ChakraLink asChild>
+                        <NextLink href="/programs">
+                          <Box position={"relative"} display={"inline-block"}>
+                            <Text {...navTextProps}>
+                              {/* Float the badge to the above the text */}
+                              Programs
+                            </Text>
+                            <Float placement={"middle-start"} offsetX="-5" >
+                              <Badge variant="solid" colorPalette="green">
+                                New
+                              </Badge>
+                            </Float>
+                          </Box>
+                        </NextLink>
+                      </ChakraLink>
+                      <ChakraLink asChild>
+                        <NextLink href="/resources">
+                          <Box position={"relative"} display={"inline-block"}>
+                            <Text {...navTextProps}>
+                              {/* Float the badge to the above the text */}
+                              Resources
+                            </Text>
+                            <Float placement={"middle-start"} offsetX="-5"
+                            >
+                              <Badge variant="solid" colorPalette="green">
+                                New
+                              </Badge>
+                            </Float>
+                          </Box>
+                        </NextLink>
+                      </ChakraLink>
+                    </VStack>
+
+                    <Heading>Appearance</Heading>
+                    <ButtonGroup>
+                      <Button
+                        bg={
+                          isFixed
+                            ? isMounted
+                              ? "teal.focusRing"
+                              : "teal.focusRing"
+                            : "transparent"
+                        }
+                        variant={isFixed ? "solid" : "ghost"}
+                        rounded="md"
+                        size={"xl"}
+                        onClick={toggleColorMode}
+                      >
+                        {isMounted && (colorMode === "light" ? <><MdMoon /> Dark Mode</> : <><MdSun /> Light Mode</>)}
+                      </Button>
+                    </ButtonGroup>
+
+                  </VStack>
+                </Container>
+              </Drawer.Body>
+              <Drawer.Footer justifyContent={"center"}>
+                <Button variant="outline" size="sm" onClick={() => setOpen(false)} mb={"10dvh"}>
+                  Close
+                </Button>
+              </Drawer.Footer>
+              <Drawer.CloseTrigger asChild>
+                <CloseButton size="sm" />
+              </Drawer.CloseTrigger>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Portal>
+      </Drawer.Root>
+    </HStack >
   );
 }

@@ -21,86 +21,93 @@ import {
   Card,
   Image as ChakraImage,
   HStack,
+  AspectRatio,
 } from "@chakra-ui/react";
-import { RiArrowRightLine } from "react-icons/ri";
 import { poppins } from "@/components/ui/fonts";
-// import { openSans } from "@/components/ui/fonts";
-import checkDeviceSize from "@/components/ui/breakpoints";
+// import { openSans } from "@/components/ui/fonts"; 
 import { Icon } from "@/components/ui/icons/icon";
 
 export default function Home() {
-  const notMobileDevice = checkDeviceSize();
   return (
-    <VStack w={"100dvw"}>
+    <VStack w={{ mobile: "100dvw" }}>
       <Box
-        position="relative"
-        w={"100%"}
-        h={["82vh", null, "100vh"]}
-        bgImage={"url('/assets/home/HeroImage.jpg')"}
-        bgSize={"cover"}
-        backgroundPosition={"center"}
-        bgRepeat={"no-repeat"}
-      //  alt="Mokse hero image"
+        roundedBottomRight={{ mobile: "40px" }}
+        w={{ mobile: "100dvw" }}
+        h={{ mobile: "98dvh" }}
+        bgImage={{ mobile: "url('/assets/home/HeroImage.jpg')" }}
+        bgSize={{ mobile: "291%" }}
+        backgroundPosition={{ mobile: "right bottom" }}
+        bgRepeat={{ mobile: "no-repeat" }}
+        bgColor={{ mobile: "rgba(0, 0, 0, 0.4)" }}
+        bgBlendMode={{ mobile: "multiply" }}
+      // alt="Mokse hero image"
       >
-        <AbsoluteCenter
-          textAlign="center"
-          bg="rgba(0, 0, 0, 0.4)"
-          w={"100%"}
-          h={"100%"}
-          alignItems={"center"}
-        >
-          <SimpleGrid columns={2} gap={6}>
-            <VStack w={"75%"} pl={16}>
-              <Heading as={"h1"} p={2}>
-                <Text
-                  textStyle={"7xl"}
-                  className={poppins.className}
-                  textAlign={"start"}
-                  textTransform={"capitalize"}
-                  overflow={"hidden"}
-                  wordBreak={"none"}
-                  verticalAlign={"baseline"}
-                  _light={{ color: "white" }}
-                >
-                  Empowering change through education and advocacy
-                </Text>
-              </Heading>
-              <Text _light={{ color: "white" }}>
-                We strive to break down barriers and stop the stigma
-                associated with incarceration through consulting services,
-                educational conferences, and business support programs.
-              </Text>
-              <Button
-                bg={"teal.focusRing"}
-                variant="solid"
-                rounded="md"
-                size={"xl"}
+        <SimpleGrid w={{ mobile: "100%" }} h={{ mobile: "100%" }} pt={{ mobile: "28dvh" }} columns={{ mobile: 1 }}>
+          <VStack gap={{ mobile: 5 }} >
+            <Heading as={"h1"}
+              size={{ mobile: "3xl" }}
+              className={poppins.className}
+              textTransform={"capitalize"}
+              verticalAlign={"baseline"}
+              textAlign={{ mobile: "center" }}
+              lineHeight={{ mobile: "1.48" }}
+              letterSpacing={{ mobile: "1px" }}
+              alignSelf={{ mobile: "normal", tablet: "start" }}
+              _dark={{ color: "white" }}
+              _light={{ color: "white" }} pl={1}
+            >
+              Empowering<br />
+              change through<br />
+              education and<br />
+              advocacy
+            </Heading>
+
+            <Container w={{ mobile: "container.xs" }} >
+              <Text
+                textAlign={{ mobile: "center" }}
+                alignSelf={{ mobile: "center" }}
+                _dark={{ color: "white" }}
+                _light={{ color: "white" }}
               >
-                <ChakraLink asChild>
-                  <NextLink href="/services">
-                    Learn More <Icon name={"ArrowRight"} size={4} />
-                  </NextLink>
-                </ChakraLink>
-              </Button>
-            </VStack>
-          </SimpleGrid>
-        </AbsoluteCenter>
+                We strive to break down barriers and stop the
+                stigma associated with incarceration through
+                consulting services, educational conferences,
+                and business support programs.
+              </Text>
+            </Container>
+
+            <Button justifySelf={{ mobile: "baseline" }}
+              mt={{ mobile: "5dvh" }}
+              bg={"teal.focusRing"}
+              variant={"solid"}
+              rounded={"md"}
+              size={{ mobile: "lg" }}
+              boxShadow={"0px 12px 24px -8px #3b4fe466"}
+            >
+              <ChakraLink asChild
+                _dark={{ color: "white" }}
+                _light={{ color: "white" }}>
+                <NextLink href="/services">
+                  Learn More <Icon name={"ArrowRight"} size={4} />
+                </NextLink>
+              </ChakraLink>
+            </Button>
+          </VStack>
+        </SimpleGrid>
       </Box>
 
-      <Container maxW={"7xl"} h={"100vh"}>
-        <VStack gapY={8} w={"100%"}>
-          <Container w={"md"}>
-            <Heading as="h2">
-              <Text
-                textStyle={"5xl"}
-                className={poppins.variable}
-                textAlign={"center"}
-                textWrapStyle={"balance"}
-                verticalAlign={"baseline"}
-                wordWrap={"normal"}
-              >
-                A Commitment To Empowerment
-              </Text>
+      <Container>
+        <VStack>
+          <Container pt={{ mobile: "15dvh" }}>
+            <Heading as="h2"
+              size={{ mobile: "2xl" }}
+              fontWeight={"bold"}
+              className={poppins.className}
+              textAlign={"center"}
+              textWrapStyle={"balance"}
+              verticalAlign={"baseline"}
+              wordWrap={"normal"}>
+              A Commitment To Empowerment
             </Heading>
           </Container>
           <Text textStyle={"md"} textAlign={"center"}>
@@ -109,180 +116,150 @@ export default function Home() {
             that foster personal and professional growth.
           </Text>
           <Button
-            bg={"teal.focusRing"}
+            bg={"brand.Mturquoise"}
             variant="solid"
             rounded="md"
-            size={"xl"}
-            mb={8}
+            size={{ mobile: "lg" }}
+            boxShadow={"0px 12px 24px -8px #3b4fe466"}
+            mt={{ mobile: "2dvh" }}
+            mb={{ mobile: "15dvh" }}
           >
             <ChakraLink asChild>
-              <NextLink href="/about-us">
-                <Text mr={4}>About Us</Text>
+              <NextLink href="/about">
+                <Text >About Us</Text>
                 <Icon name={"ArrowRight"} size={4} />
               </NextLink>
             </ChakraLink>
           </Button>
-          <Center>
-            <SimpleGrid
-              columns={[1, null, 2]}
-              row={[2, null, 2]}
-              gapX={8}
-              gapY={16}
-              w={"3xl"}
-            >
-              {empowerment.map((f) => (
-                <FeatureCard key={f.title} {...f} />
-              ))}
-            </SimpleGrid>
-          </Center>
-        </VStack>
-      </Container>
-
-      <HStack justifyContent={"space-between"} h={"46vh"} my={"25vh"} gap={60}>
-        {/* Fix top/bottom alignment of image */}
-        <ChakraImage
-          height={"53%"}
-          width={"325px"}
-          src={"/dots.webp"}
-          alt={"Mokse hero image"}
-          pt={0}
-        />
-
-        <HStack bg={"#43c0b3"} >
-          <Box position={"relative"} h={"46vh"}>
-            {/* Computer Image */}
-            <ChakraImage
-              rounded={"md"}
-              h={"100%"}
-              w={"356px"}
-              fit={"contain"}
-              src={"/home-backdrop-image.jpg"}
-              alt={"Mokse hero image"}
-            />
+          <SimpleGrid
+            columns={{ mobile: 1, tablet: 2 }}
+            row={{ mobile: 1, tablet: 2 }}
+            pt={8}
+            gap={8}
+            css={{
+              "& > *": {
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
+                boxShadow: "0px 12px 24px -8px #3b4fe466"
+              }
+            }}>
             {
-              /* People Image
-              * Fix Sizing
-               */
+              empowerment.map((f) => (
+                <FeatureCard key={f.title} {...f} />
+              ))
             }
-            <Float placement={"top-start"} offsetY={40} offsetX={25}>
-              <ChakraImage
-                rounded={"md"}
-                fit={"contain"}
-                h={"100%"}
-                w={"356px"}
-                src={"/assets/home/Image-1-1.jpg"}
-                alt={"Mokse hero image"}
-              />
-            </Float>
-          </Box>
-          <Container ml={"8vh"}>
+          </SimpleGrid>
+        </VStack>
+      </Container >
+
+      <Stack pt={{ mobile: "30dvh" }}>
+        < Stack bg={"brand.Mturquoise"} position={"relative"}>
+          <Float placement={"top-end"} offsetY={"90px"} offsetX={125}>
+            <ChakraImage
+              // height={"53%"}
+              // width={"325px"}
+              src={"/dots.webp"}
+              alt={"Mokse hero image"}
+              pt={0}
+              hideFrom={"mobile"}
+            />
+            <Box
+              w={{ mobile: "255px" }}
+              h={{ mobile: "392px" }}
+              bgImage={{ mobile: "url('/home-backdrop-image.jpg')" }}
+              bgSize={{ mobile: "contain" }}
+              bgRepeat={{ mobile: "no-repeat" }}
+              rounded={"lg"}
+              bgBlendMode={{ mobile: "multiply" }}
+              role="img"
+              aria-label="Mokse hero image 1"
+              position={"relative"}
+            >
+              <Float placement={"top-start"} offsetY={{ mobile: "118px" }} offsetX={{ mobile: "5px" }}>
+                <Box
+                  w={{ mobile: "255px" }}
+                  h={{ mobile: "392px" }}
+                  bgImage={{ mobile: "url('/assets/home/Image-1-1.jpg')" }}
+                  bgSize={{ mobile: "contain" }}
+                  bgRepeat={{ mobile: "no-repeat" }}
+                  rounded={"lg"}
+                  bgBlendMode={{ mobile: "multiply" }}
+                  role="img"
+                  aria-label="Mokse hero image 2" />
+              </Float>
+            </Box>
+          </Float>
+
+          <Container h={{ mobile: "46dvh" }} mt={{ mobile: "46dvh" }} >
             <HStack>
-              <Heading size={"3xl"} as={"h2"}>
-                <Text>Make a Difference</Text>
-                <Text>- Get Involved!</Text>
+              <Heading as={"h2"}>
+                <Text textStyle={"2xl"} >
+                  Make a Difference
+                </Text>
+                <Text textStyle={"2xl"}>- Get Involved!</Text>
               </Heading>
             </HStack>
-            <Box w={"full"}>
-              <Text textStyle={"lg"} mt={4} mb={8} >
+            <Box pt={{ mobile: "2dvh" }} >
+              <Text >
                 Are you passionate about helping justice-impacted
                 individuals? We need compassionate volunteers to assist in
                 various roles, including mentorship, tutoring, and
                 administrative support.
               </Text>
             </Box>
-            <Button size={"lg"}>Get Involved <Icon name={"ArrowRight"} size={4} /></Button>
+            <Button mt={{ mobile: "4dvh" }}
+              size={{ mobile: "lg" }}>Get Involved <Icon name={"ArrowRight"} /></Button>
           </Container>
-
-          {/* ORIGINAL SETUP */}
-          {/* <Card.Root
-                flexDirection={"row"}
-                size={"sm"}
-                h={"100%"}
-                ml={"25vh"}
-                bg="rgba(0, 0, 0, 0)"
-                border={0}
-              >
-                <Box
-                  position="relative"
-                  borderRadius={"xl"}
-                  w={"350px"}
-                  h={"55vh"}
-                  bgImage={"url('/home-backdrop-image.jpg')"}
-                  bgSize={"cover"}
-                  backgroundPosition={"center"}
-                  bgRepeat={"no-repeat"}
-                  // alt="Mokse hero image"
-                >
-                  <AbsoluteCenter bg="rgba(0, 0, 0, 0)" w={"100%"} h={"100%"}>
-                    <Box
-                      position="relative"
-                      borderRadius={"lg"}
-                      top={"-88px"}
-                      left={"-125px"}
-                      w={"350px"}
-                      h={"55vh"}
-                      bgImage={"url('/assets/home/Image-1-1.jpg')"}
-                      bgSize={"cover"}
-                      backgroundPosition={"center"}
-                      bgRepeat={"no-repeat"}
-                      zIndex={1}
-                    //  alt="Mokse hero image"
-                    >
-                      <AbsoluteCenter
-                        bg="rgba(0, 0, 0, 0.1)"
-                        w={"100%"}
-                        h={"100%"}
-                      ></AbsoluteCenter>
-                    </Box>
-                  </AbsoluteCenter>
-                </Box>
-                <Card.Body w={"25px"}>
-                  <Container _light={{ color: "white" }}>
-                    <h3>Make a Difference - Get Involved!</h3>
-                    <p>
-                      Are you passionate about helping justice-impacted
-                      individuals? We need compassionate volunteers to assist in
-                      various roles, including mentorship, tutoring, and
-                      administrative support...
-                    </p>
-                    <Button>Get Involved</Button>
-                  </Container>
-                </Card.Body>
-              </Card.Root> */}
-        </HStack>
-      </HStack>
+        </ Stack>
+      </ Stack>
 
       <Stack>
-        <Stack direction={"row"}>
+        <SimpleGrid
+          columns={{ mobile: 1, tablet: 2 }}
+          row={{ mobile: 1, tablet: 2 }}
+          pt={8}
+          gap={8}
+          css={{
+            "& > *": {
+              border: "0.5px solid rgba(0, 0, 0, 0.2)",
+              boxShadow: "0px 12px 24px -8px #3b4fe466"
+            }
+          }}>
           {getInvolved.map((f) => (
             <FeatureCard key={f.title} {...f} />
           ))}
-        </Stack>
-        <Center>
-          <Button colorPalette="teal" variant="solid" size={"xl"}>
-            <ChakraLink asChild>
-              <NextLink href="https://www.paypal.com/donate/?hosted_button_id=G46WV8T5NG85A">
-                <Text _light={{ color: "white" }}>Donate</Text>
-              </NextLink>
-            </ChakraLink>
-          </Button>
-        </Center>
+        </SimpleGrid>
+        <Button
+          bg={"teal.focusRing"}
+          variant="solid"
+          w={{ mobile: "40dvw" }}
+          h={{ mobile: "8dvh" }}
+          alignSelf={"center"}
+          mt={8}
+          mb={16}
+          boxShadow={"0px 12px 24px -8px #3b4fe466"}>
+          <ChakraLink asChild>
+            <NextLink href="https://www.paypal.com/donate/?hosted_button_id=G46WV8T5NG85A">
+              <Text _light={{ color: "white" }} textStyle={{ mobile: "lg" }}>Donate</Text>
+            </NextLink>
+          </ChakraLink>
+        </Button>
       </Stack>
-      <Container w={"7xl"} pb={14} asChild>
+      <Container w={{
+        mobile: "mobile"
+      }} pb={14} asChild>
         <Center>
           <Card.Root
             flexDirection="row"
             borderRadius={"0"}
             gap={6}
-            w={"100%"}
             bg="rgba(0, 0, 0, 0.0)"
             border={0}
           >
-            <Card.Body w={"xl"}>
-              <Stack direction={"column"} w={"sm"}>
+            <Card.Body w={{}}>
+              <Stack direction={"column"} w={" "}>
                 <Heading>
                   <Text
-                    textStyle={"4xl"}
+                    textStyle={{}}
                     className={poppins.className}
                     textAlign={"left"}
                     verticalAlign={"baseline"}
@@ -297,83 +274,76 @@ export default function Home() {
               </Stack>
             </Card.Body>
 
-            <Box asChild>
+            <AspectRatio
+            // maxW={"800px"} maxH={"450px"} ratio={16 / 9}>
+            >
               <iframe
-                width="800"
-                height="450"
                 src="https://www.youtube-nocookie.com/embed/p2q--KoXnXA?si=6mz92ZtuwqfrvnSZ"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-              ></iframe>
-            </Box>
+              />
+            </AspectRatio>
           </Card.Root>
         </Center>
       </Container>
 
-      <Container w={"7xl"}>
-        <SimpleGrid columns={[1, 4, 4]} gapX={6} gapY={6}>
-          <GridItem colSpan={2}>
+      <Container  >
+        <SimpleGrid >
+
+
+          <GridItem >
             <ChakraImage
               rounded="md"
-              width="100%"
-              aspectRatio={3 / 2}
               fit="contain"
               src="/assets/home/IMG_0997-1-1024x683.webp"
               alt=""
             />
           </GridItem>
-
-          <GridItem colSpan={2}>
+          <GridItem >
             <ChakraImage
-              rounded="md"
-              height="100%"
-              width="100%"
+              rounded="lg"
               fit="contain"
               src="/assets/home/IMG_1004-1024x683.webp"
               alt=""
-            />
-          </GridItem>
 
-          <GridItem colSpan={1}>
+            />
+
+            {/* <Image
+                src="/assets/home/IMG_1004-1024x683.webp"
+                alt=""
+                width={1024}
+                height={683}
+              /> */}
+          </GridItem>
+          <GridItem colSpan={{ mobile: 1 }}>
             <ChakraImage
               rounded="md"
-              height="100%"
-              width="100%"
               fit="contain"
               src="/assets/home/IMG_1011-300x300.webp"
               alt=""
             />
           </GridItem>
-
-          <GridItem colSpan={1}>
+          <GridItem colSpan={{ mobile: 1 }}>
             <ChakraImage
               rounded="md"
-              height="100%"
-              width="100%"
               fit="contain"
               src="/assets/home/IMG_1012-300x300.webp"
               alt=""
             />
           </GridItem>
-
-          <GridItem colSpan={1}>
+          <GridItem colSpan={{ mobile: 1 }}>
             <ChakraImage
               rounded="md"
-              height="100%"
-              width="100%"
               fit="contain"
               src="/assets/home/IMG_1027-300x300.webp"
               alt=""
             />
           </GridItem>
-
-          <GridItem colSpan={1}>
+          <GridItem >
             <ChakraImage
               rounded="md"
-              height="100%"
-              width="100%"
               fit="contain"
               src="/assets/home/IMG_0995-300x300.webp"
               alt=""
