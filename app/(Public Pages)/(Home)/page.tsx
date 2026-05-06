@@ -34,12 +34,14 @@ export default function Home() {
         roundedBottomRight={{ mobile: "40px" }}
         w={{ mobile: "100dvw" }}
         h={{ mobile: "98dvh" }}
-        bgImage={{ mobile: "url('/assets/home/HeroImage.jpg')" }}
+        bgImage={"url('/assets/home/HeroImage.jpg')"}
         bgSize={{ mobile: "291%" }}
         backgroundPosition={{ mobile: "right bottom" }}
         bgRepeat={{ mobile: "no-repeat" }}
         bgColor={{ mobile: "rgba(0, 0, 0, 0.4)" }}
         bgBlendMode={{ mobile: "multiply" }}
+        role="img"
+        aria-label="Mokse hero image 1"
       // alt="Mokse hero image"
       >
         <SimpleGrid w={{ mobile: "100%" }} h={{ mobile: "100%" }} pt={{ mobile: "28dvh" }} columns={{ mobile: 1 }}>
@@ -96,7 +98,7 @@ export default function Home() {
         </SimpleGrid>
       </Box>
 
-      <Container>
+      <Container fluid>
         <VStack>
           <Container pt={{ mobile: "15dvh" }}>
             <Heading as="h2"
@@ -151,7 +153,7 @@ export default function Home() {
         </VStack>
       </Container >
 
-      < Stack bg={"brand.Mturquoise"} position={"relative"} h={{ mobile: "80dvh" }} mt={{ mobile: "36dvh" }}>
+      <Container bg={"brand.Mturquoise"} position={"relative"} h={{ mobile: "80dvh" }} mt={{ mobile: "36dvh" }}>
         <Float placement={"top-end"} offsetY={"90px"} offsetX={"127px"}>
           <ChakraImage
             // height={"53%"}
@@ -210,9 +212,9 @@ export default function Home() {
             Get Involved <Icon name={"ArrowRight"} />
           </Button>
         </Container>
-      </ Stack>
+      </Container>
 
-      <Stack>
+      <Container fluid centerContent>
         <SimpleGrid
           columns={{ mobile: 1, tablet: 2 }}
           row={{ mobile: 1, tablet: 2 }}
@@ -243,8 +245,8 @@ export default function Home() {
             </NextLink>
           </ChakraLink>
         </Button>
-      </Stack>
-      <Container pb={14} asChild>
+      </Container>
+      <Container pb={14} fluid asChild>
         <Card.Root
           flexDirection={{ mobile: "column" }}
           borderRadius={"0"}
@@ -267,7 +269,7 @@ export default function Home() {
           </Card.Body>
 
           <AspectRatio
-            maxW={{ mobile: "800px" }} maxH={{ mobile: "450px" }} ratio={16 / 9}>
+            maxW={{ mobile: "100%" }} maxH={{ mobile: "450px" }} ratio={16 / 9}>
             <iframe
               src="https://www.youtube-nocookie.com/embed/p2q--KoXnXA?si=6mz92ZtuwqfrvnSZ"
               title="YouTube video player"
@@ -278,65 +280,101 @@ export default function Home() {
         </Card.Root>
       </Container >
 
-      <Container  >
-        <SimpleGrid >
-
-
+      <Container fluid centerContent>
+        <SimpleGrid columns={{ mobile: 1 }} gap={20} pt={8}>
           <GridItem colSpan={{ mobile: 1 }}>
-            <ChakraImage
+            <Box
+              h={{ mobile: "230px" }}
+              w={{ mobile: "343px" }}
+              bgImage={"url('/assets/home/IMG_0997-1-1024x683.webp')"}
+              bgRepeat={{ mobile: "no-repeat" }}
+              backgroundPosition={"center"}
+              bgSize={{ mobile: "100%" }}
+              role="img"
+              aria-label="Mokse hero image 1"
               rounded="md"
-              fit="contain"
-              src="/assets/home/IMG_0997-1-1024x683.webp"
-              alt=""
             />
           </GridItem>
           <GridItem colSpan={{ mobile: 1 }}>
-            <ChakraImage
-              rounded="lg"
-              fit="contain"
-              src="/assets/home/IMG_1004-1024x683.webp"
-              alt=""
-
-            />
-
-            {/* <Image
-                src="/assets/home/IMG_1004-1024x683.webp"
-                alt=""
-                width={1024}
-                height={683}
-              /> */}
-          </GridItem>
-          <GridItem colSpan={{ mobile: 1 }}>
-            <ChakraImage
+            <Box
+              h={{ mobile: "230px" }}
+              w={{ mobile: "343px" }}
+              bgImage={"url('/assets/home/IMG_1004-1024x683.webp')"}
+              bgRepeat={{ mobile: "no-repeat" }}
+              backgroundPosition={"center"}
+              bgSize={{ mobile: "100%" }}
+              role="img"
+              aria-label="Mokse hero image 1"
               rounded="md"
-              fit="contain"
-              src="/assets/home/IMG_1011-300x300.webp"
-              alt=""
             />
           </GridItem>
           <GridItem colSpan={{ mobile: 1 }}>
-            <ChakraImage
-              rounded="md"
-              fit="contain"
-              src="/assets/home/IMG_1012-300x300.webp"
-              alt=""
-            />
+            <Center
+              w={{ mobile: "343px" }}
+              h={{ mobile: "230px" }}>
+              <Box
+                h={{ mobile: "125%" }}
+                aspectRatio={{ mobile: "square" }}
+                bgImage={"url('/assets/home/IMG_1011-300x300.webp')"}
+                bgRepeat={{ mobile: "no-repeat" }}
+                backgroundPosition={"center"}
+                bgSize={{ mobile: "cover" }}
+                role="img"
+                aria-label="Mokse hero image 1"
+                rounded="md"
+              />
+            </Center>
           </GridItem>
           <GridItem colSpan={{ mobile: 1 }}>
-            <ChakraImage
-              rounded="md"
-              fit="contain"
-              src="/assets/home/IMG_1027-300x300.webp"
-              alt=""
-            />
+            <Center
+              w={{ mobile: "343px" }}
+              h={{ mobile: "230px" }}>
+              <Box
+                h={{ mobile: "125%" }}
+                aspectRatio={{ mobile: "square" }}
+                bgImage={"url('/assets/home/IMG_1012-300x300.webp')"}
+                bgRepeat={{ mobile: "no-repeat" }}
+                backgroundPosition={"center"}
+                bgSize={{ mobile: "cover" }}
+                role="img"
+                aria-label="Mokse hero image 1"
+                rounded="md"
+              />
+            </Center>
+          </GridItem>
+          <GridItem colSpan={{ mobile: 1 }}>
+            <Center
+              w={{ mobile: "343px" }}
+              h={{ mobile: "230px" }}>
+              <Box
+                h={{ mobile: "125%" }}
+                aspectRatio={{ mobile: "square" }}
+                bgImage={"url('/assets/home/IMG_1027-300x300.webp')"}
+                bgRepeat={{ mobile: "no-repeat" }}
+                backgroundPosition={"center"}
+                bgSize={{ mobile: "cover" }}
+                role="img"
+                aria-label="Mokse hero image 1"
+                rounded="md"
+              />
+            </Center>
           </GridItem>
           <GridItem >
-            <ChakraImage
-              rounded="md"
-              fit="contain"
-              src="/assets/home/IMG_0995-300x300.webp"
-              alt=""
-            />
+            <Center
+              w={{ mobile: "343px" }}
+              h={{ mobile: "230px" }}>
+              <Box
+                h={{ mobile: "125%" }}
+                aspectRatio={{ mobile: "square" }}
+                bgImage={"url('/assets/home/IMG_0995-300x300.webp')"}
+                bgRepeat={{ mobile: "no-repeat" }}
+                backgroundPosition={"center"}
+                bgSize={{ mobile: "cover" }}
+                role="img"
+                aria-label="Mokse hero image 1"
+                rounded="md"
+              />
+            </Center>
           </GridItem>
         </SimpleGrid>
       </Container>
