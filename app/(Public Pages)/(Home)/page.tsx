@@ -151,65 +151,65 @@ export default function Home() {
         </VStack>
       </Container >
 
-      <Stack pt={{ mobile: "30dvh" }}>
-        < Stack bg={"brand.Mturquoise"} position={"relative"}>
-          <Float placement={"top-end"} offsetY={"90px"} offsetX={125}>
-            <ChakraImage
-              // height={"53%"}
-              // width={"325px"}
-              src={"/dots.webp"}
-              alt={"Mokse hero image"}
-              pt={0}
-              hideFrom={"mobile"}
-            />
-            <Box
-              w={{ mobile: "255px" }}
-              h={{ mobile: "392px" }}
-              bgImage={{ mobile: "url('/home-backdrop-image.jpg')" }}
-              bgSize={{ mobile: "contain" }}
-              bgRepeat={{ mobile: "no-repeat" }}
-              rounded={"lg"}
-              bgBlendMode={{ mobile: "multiply" }}
-              role="img"
-              aria-label="Mokse hero image 1"
-              position={"relative"}
-            >
-              <Float placement={"top-start"} offsetY={{ mobile: "118px" }} offsetX={{ mobile: "5px" }}>
-                <Box
-                  w={{ mobile: "255px" }}
-                  h={{ mobile: "392px" }}
-                  bgImage={{ mobile: "url('/assets/home/Image-1-1.jpg')" }}
-                  bgSize={{ mobile: "contain" }}
-                  bgRepeat={{ mobile: "no-repeat" }}
-                  rounded={"lg"}
-                  bgBlendMode={{ mobile: "multiply" }}
-                  role="img"
-                  aria-label="Mokse hero image 2" />
-              </Float>
-            </Box>
-          </Float>
+      < Stack bg={"brand.Mturquoise"} position={"relative"} h={{ mobile: "80dvh" }} mt={{ mobile: "36dvh" }}>
+        <Float placement={"top-end"} offsetY={"90px"} offsetX={"127px"}>
+          <ChakraImage
+            // height={"53%"}
+            // width={"325px"}
+            src={"/dots.webp"}
+            alt={"Mokse hero image"}
+            pt={0}
+            hideFrom={"mobile"}
+          />
+          <Box
+            w={{ mobile: "255px" }}
+            h={{ mobile: "392px" }}
+            bgImage={{ mobile: "url('/home-backdrop-image.jpg')" }}
+            bgSize={{ mobile: "contain" }}
+            bgRepeat={{ mobile: "no-repeat" }}
+            rounded={"lg"}
+            bgBlendMode={{ mobile: "multiply" }}
+            role="img"
+            aria-label="Mokse hero image 1"
+            position={"relative"}
+          >
+            <Float placement={"top-start"} offsetY={{ mobile: "118px" }} offsetX={{ mobile: "-32px" }}>
+              <Box
+                w={{ mobile: "255px" }}
+                h={{ mobile: "392px" }}
+                bgImage={{ mobile: "url('/assets/home/Image-1-1.jpg')" }}
+                bgSize={{ mobile: "contain" }}
+                bgRepeat={{ mobile: "no-repeat" }}
+                rounded={"lg"}
+                bgBlendMode={{ mobile: "multiply" }}
+                role="img"
+                aria-label="Mokse hero image 2" />
+            </Float>
+          </Box>
+        </Float>
 
-          <Container h={{ mobile: "46dvh" }} mt={{ mobile: "46dvh" }} >
-            <HStack>
-              <Heading as={"h2"}>
-                <Text textStyle={"2xl"} >
-                  Make a Difference
-                </Text>
-                <Text textStyle={"2xl"}>- Get Involved!</Text>
-              </Heading>
-            </HStack>
-            <Box pt={{ mobile: "2dvh" }} >
-              <Text >
-                Are you passionate about helping justice-impacted
-                individuals? We need compassionate volunteers to assist in
-                various roles, including mentorship, tutoring, and
-                administrative support.
+        <Container h={{ mobile: "46dvh" }} mt={{ mobile: "40dvh" }} >
+          <HStack>
+            <Heading as={"h2"}>
+              <Text textStyle={"2xl"} >
+                Make a Difference
               </Text>
-            </Box>
-            <Button mt={{ mobile: "4dvh" }}
-              size={{ mobile: "lg" }}>Get Involved <Icon name={"ArrowRight"} /></Button>
-          </Container>
-        </ Stack>
+              <Text textStyle={"2xl"}>- Get Involved!</Text>
+            </Heading>
+          </HStack>
+          <Box pt={{ mobile: "2dvh" }} >
+            <Text >
+              Are you passionate about helping justice-impacted
+              individuals? We need compassionate volunteers to assist in
+              various roles, including mentorship, tutoring, and
+              administrative support.
+            </Text>
+          </Box>
+          <Button mt={{ mobile: "4dvh" }}
+            size={{ mobile: "lg" }} h={{ mobile: "6dvh" }}>
+            Get Involved <Icon name={"ArrowRight"} />
+          </Button>
+        </Container>
       </ Stack>
 
       <Stack>
@@ -229,13 +229,13 @@ export default function Home() {
           ))}
         </SimpleGrid>
         <Button
-          bg={"teal.focusRing"}
+          bg={"brand.Mturquoise"}
           variant="solid"
-          w={{ mobile: "40dvw" }}
+          w={{ mobile: "45dvw" }}
           h={{ mobile: "8dvh" }}
           alignSelf={"center"}
-          mt={8}
-          mb={16}
+          mt={{ mobile: 8 }}
+          mb={{ mobile: 16 }}
           boxShadow={"0px 12px 24px -8px #3b4fe466"}>
           <ChakraLink asChild>
             <NextLink href="https://www.paypal.com/donate/?hosted_button_id=G46WV8T5NG85A">
@@ -244,56 +244,45 @@ export default function Home() {
           </ChakraLink>
         </Button>
       </Stack>
-      <Container w={{
-        mobile: "mobile"
-      }} pb={14} asChild>
-        <Center>
-          <Card.Root
-            flexDirection="row"
-            borderRadius={"0"}
-            gap={6}
-            bg="rgba(0, 0, 0, 0.0)"
-            border={0}
-          >
-            <Card.Body w={{}}>
-              <Stack direction={"column"} w={" "}>
-                <Heading>
-                  <Text
-                    textStyle={{}}
-                    className={poppins.className}
-                    textAlign={"left"}
-                    verticalAlign={"baseline"}
-                    textTransform={"capitalize"}
-                  >
-                    Special Story: The three words that changed my life
-                  </Text>
-                </Heading>
-                <Card.Description>
-                  Mokse is proud to share the TEDx talk of Dr. Matthews.
-                </Card.Description>
-              </Stack>
-            </Card.Body>
+      <Container pb={14} asChild>
+        <Card.Root
+          flexDirection={{ mobile: "column" }}
+          borderRadius={"0"}
+          gap={6}
+          bg="rgba(0, 0, 0, 0.0)"
+          w={{ mobile: "sm" }}
+        >
+          <Card.Body w={{}}>
+            <Heading
+              textStyle={{ mobile: "3xl" }}
+              className={poppins.className}
+              textAlign={"left"}
+              verticalAlign={"baseline"}
+              textTransform={"capitalize"}>
+              Special Story: The three words that changed my life
+            </Heading>
+            <Card.Description>
+              Mokse is proud to share the TEDx talk of Dr. Matthews.
+            </Card.Description>
+          </Card.Body>
 
-            <AspectRatio
-            // maxW={"800px"} maxH={"450px"} ratio={16 / 9}>
-            >
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/p2q--KoXnXA?si=6mz92ZtuwqfrvnSZ"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            </AspectRatio>
-          </Card.Root>
-        </Center>
-      </Container>
+          <AspectRatio
+            maxW={{ mobile: "800px" }} maxH={{ mobile: "450px" }} ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/p2q--KoXnXA?si=6mz92ZtuwqfrvnSZ"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </AspectRatio>
+        </Card.Root>
+      </Container >
 
       <Container  >
         <SimpleGrid >
 
 
-          <GridItem >
+          <GridItem colSpan={{ mobile: 1 }}>
             <ChakraImage
               rounded="md"
               fit="contain"
@@ -301,7 +290,7 @@ export default function Home() {
               alt=""
             />
           </GridItem>
-          <GridItem >
+          <GridItem colSpan={{ mobile: 1 }}>
             <ChakraImage
               rounded="lg"
               fit="contain"
